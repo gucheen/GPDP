@@ -1,5 +1,8 @@
 # GPDP
-Google plus like dropdown selector
+Google plus like dropdown selector  
+
+[![Dependency Status](https://david-dm.org/gucheen/GPDP.svg?style=flat-square)](https://david-dm.org/gucheen/GPDP)
+[![devDependency Status](https://david-dm.org/gucheen/GPDP/dev-status.svg?style=flat-square)](https://david-dm.org/gucheen/GPDP#info=devDependencies)
 
 # TODO
 1. More features
