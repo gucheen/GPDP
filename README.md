@@ -1,6 +1,10 @@
 # GPDP
 Google plus like dropdown selector
 
+# TODO
+1. More features
+2. Full unit-testing
+
 # License
 The MIT License (MIT)
 
