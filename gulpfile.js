@@ -4,6 +4,7 @@ var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var rename = require("gulp-rename");
 var minifyCss = require('gulp-minify-css');
+var shell = require('gulp-shell');
 
 // Static Server + watching scss/html files
 gulp.task('serve', ['sass'], function () {
@@ -28,6 +29,10 @@ gulp.task('sass', function () {
     .pipe(gulp.dest("./dist/css"))
     .pipe(browserSync.stream());
 });
+
+gulp.task('doc', shell.task([
+  './node_modules/jsdoc/jsdoc.js src/js/ -d ./doc'
+]));
 
 gulp.task('build', ['sass'], function () {
   return gulp.src('src/js/*.js')
