@@ -1,6 +1,6 @@
 {
-  "name": "dp",
-  "version": "1.0.0",
+  "name": "GPDP",
+  "version": "0.0.1",
   "description": "Google plus like dropdown selector",
   "main": "dp.js",
   "scripts": {
