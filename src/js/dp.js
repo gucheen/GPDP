@@ -97,13 +97,19 @@ var DP = function (element, options) {
 /**
  * Attach an event
  * @param event - event's name
- * @param func - callback function
+ * @param {eventCallback}func - callback function
  */
 DP.prototype.listen = function (event, func) {
   this._events = this._events || {};
   this._events[event] = this._events[event] || [];
   this._events[event].push(func);
 };
+
+/**
+ * callback function definition of events
+ * @callback eventCallback
+ * @param {*} value - current selected value
+ */
 
 /**
  * Detach an event
