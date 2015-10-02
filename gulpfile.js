@@ -31,7 +31,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('doc', shell.task([
-  './node_modules/jsdoc/jsdoc.js src/js/ ./README.md ./package.json -d ./doc'
+  './node_modules/jsdoc/jsdoc.js src/js/ ./README.md -d ./doc'
 ]));
 
 gulp.task('build', ['sass'], function () {
