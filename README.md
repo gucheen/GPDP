@@ -5,6 +5,34 @@ Google plus like dropdown selector
 [![Dependency Status](https://david-dm.org/gucheen/GPDP.svg?style=flat-square)](https://david-dm.org/gucheen/GPDP)
 [![devDependency Status](https://david-dm.org/gucheen/GPDP/dev-status.svg?style=flat-square)](https://david-dm.org/gucheen/GPDP#info=devDependencies)
 
+# Features
+1. Pure JavaScript and CSS(none dependencies)
+2. Support complex value types. Object, Array, Number, Function,  etc...
+3. Customized themes
+
+# Usage
+```js
+// New DP
+var newDP = new DP(containerElement, options);
+
+/*
+* Attach Event
+* eventType: 'changeValue'
+* callback: function (value) {}
+*/
+newDP.listen(eventType, callback);
+
+/*
+* Detach Event
+*/
+newDP.unlisten(eventType, callback);
+
+/*
+* Get current value
+*/
+newDP.getValue();
+```
+
 # TODO
 1. More features
 2. Full unit-testing
