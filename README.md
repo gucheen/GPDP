@@ -1,6 +1,7 @@
 # GPDP
 Google plus like dropdown selector  
 
+[![Build Status](https://travis-ci.org/gucheen/GPDP.svg?branch=master)](https://travis-ci.org/gucheen/GPDP)
 [![Dependency Status](https://david-dm.org/gucheen/GPDP.svg?style=flat-square)](https://david-dm.org/gucheen/GPDP)
 [![devDependency Status](https://david-dm.org/gucheen/GPDP/dev-status.svg?style=flat-square)](https://david-dm.org/gucheen/GPDP#info=devDependencies)
 
