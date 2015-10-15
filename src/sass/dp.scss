@@ -1,4 +1,15 @@
+$color-text: #404040;
+$color-white: #fff;
+$border-radius-span: 2px;
+$border-radius-menu: 3px;
+
+@mixin background-gradient {
+  background-image: -webkit-linear-gradient(top, transparent, transparent);
+  background-image: linear-gradient(top, transparent, transparent);
+}
+
 .dp-container {
+  @include background-gradient;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -6,13 +17,11 @@
   .dp-unit {
     .dp-span {
       box-sizing: border-box;
-      -webkit-border-radius: 2px;
-      border-radius: 2px;
-      background-color: #fff;
-      background-image: -webkit-linear-gradient(top, transparent, transparent);
-      background-image: linear-gradient(top, transparent, transparent);
+      -webkit-border-radius: $border-radius-span;
+      border-radius: $border-radius-span;
+      background-color: $color-white;
       border: 1px solid #d9d9d9;
-      color: #404040;
+      color: $color-text;
       cursor: default;
       font-size: 12px;
       font-weight: bold;
@@ -25,24 +34,23 @@
       text-align: center;
       text-decoration: none;
       &:hover {
-        background-color: #fff;
-        background-image: -webkit-linear-gradient(top, transparent, transparent);
-        background-image: linear-gradient(top, transparent, transparent);
+        background-color: $color-white;
+        @include background-gradient;
         -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
         box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
         border-color: #b8b8b8;
-        color: #404040;
+        color: $color-text;
       }
     }
     .dp-menu {
       box-sizing: border-box;
-      -webkit-border-radius: 3px;
-      border-radius: 3px;
+      -webkit-border-radius: $border-radius-menu;
+      border-radius: $border-radius-menu;
       -webkit-box-shadow: 0 2px 40px rgba(0, 0, 0, .4);
       box-shadow: 0 2px 40px rgba(0, 0, 0, .4);
       -webkit-transition: opacity .218s;
       transition: opacity .218s;
-      background: #fff;
+      background: $color-white;
       border: 1px solid #ccc;
       border: 1px solid rgba(0, 0, 0, .2);
       cursor: default;
