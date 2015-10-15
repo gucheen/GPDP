@@ -21,4 +21,5 @@ var testDp2 = new DP(document.getElementsByClassName('test2')[0], {
 
 testDp2.listen('changeValue', function (value) {
   console.log('%cLOG VALUE: testDp2', 'color: blue', value);
+  document.getElementsByClassName('test2-result')[0].textContent = (typeof value) + ' : ' + JSON.stringify(value, null, 2);
 });
