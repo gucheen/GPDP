@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * GPDP dropdown selector
  * Constructor for building object
@@ -5,6 +7,7 @@
  * @param {Object=} options
  * @param {Array.<Object>=} options.data
  * @param {boolean=} options.valueReturnByFunction
+ * @param {string} options.name
  * @returns {DP}
  * @constructor
  */
@@ -73,7 +76,7 @@ var DP = function (element, options) {
   });
 
   // click on tag
-  self.span.addEventListener('click', function (event) {
+  self.span.addEventListener('click', function () {
     self.menu.classList.toggle('open');
   });
 
