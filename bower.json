@@ -1,0 +1,26 @@
+{
+  "name": "GPDP",
+  "version": "0.1.0",
+  "homepage": "https://github.com/gucheen/GPDP",
+  "authors": [
+    "gucheng <guchengf@gmail.com>"
+  ],
+  "description": "Google plus like dropdown selector",
+  "main": [
+    "dist/js/dp.min.js",
+    "dist/css.min.css"
+  ],
+  "moduleType": [],
+  "keywords": [
+    "dropdown",
+    "selector"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
