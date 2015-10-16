@@ -6,13 +6,19 @@
  * @param element
  * @param {Object=} options
  * @param {Array.<Object>=} options.data
- * @param {boolean=} options.valueReturnByFunction
+ * @param {boolean} [options.valueReturnByFunction=true]
  * @param {string} options.name
  * @returns {DP}
  * @constructor
  */
 var DP = function (element, options) {
   var self = this;
+
+  // private data tank
+  self.store = {};
+
+  // private settings
+  self.settings = {};
 
   // store container
   self.container = element;
@@ -24,7 +30,7 @@ var DP = function (element, options) {
     self.menu = self.container.getElementsByClassName('dp-menu')[0];
   } else {
     // automatically getting return value of function types data
-    self.valueReturnByFunction = options.valueReturnByFunction;
+    self.settings.valueReturnByFunction = options.valueReturnByFunction || true;
 
     // create all elements from data of options
     // store data
@@ -146,14 +152,14 @@ DP.prototype.getValue = function () {
   var value;
   var index;
 
-  index = parseInt(this.container.dataset.index, 10);
+  index = parseInt(this.store.currentIndex, 10);
   if (index > -1) {
     value = this.data[index].value;
     if (typeof value === 'function') {
       value = value();
     }
   } else {
-    value = this.container.dataset.value;
+    value = this.store.value;
   }
   return value;
 };
@@ -163,8 +169,8 @@ DP.prototype.getValue = function () {
  * @param value
  */
 DP.prototype.setValue = function (value) {
-  this.container.dataset.index = null;
-  this.container.dataset.value = value;
+  this.store.currentIndex = null;
+  this.store.value = value;
   this.trigger('changeValue');
   return true;
 };
@@ -175,8 +181,8 @@ DP.prototype.setValue = function (value) {
  * @param index
  */
 DP.prototype.setValueIndex = function (index) {
-  this.container.dataset.value = null;
-  this.container.dataset.index = index;
+  this.store.value = null;
+  this.store.currentIndex = index;
   this.trigger('changeValue');
 };
 
