@@ -7,8 +7,15 @@ var testElement = document.createElement('div');
 var testOptions = {
   name: 'Test',
   data: [
-    {label: 'test1', value: 1},
-    {label: 'test2', value: 2}
+    {label: 'Object', value: {a: 1}},
+    {label: 'Array', value: [1, 2]},
+    {
+      label: 'Function',
+      value: function () {
+        return 'value returned by function';
+      }
+    },
+    {label: 'Null', value: null}
   ]
 };
 
@@ -27,17 +34,28 @@ describe('DP', function () {
     });
   });
   describe('#handling value', function () {
-    var tests = [1, 2, 3];
+    var tests = [1, 11, 111];
     tests.forEach(function (test, index) {
       it('should return "true" after calling setValue(' + test + ')', function () {
         expect(testDP.setValue(test)).to.be.ok();
       });
       it('should return "' + test + '" after calling getValue()', function () {
-        expect(testDP.getValue()).to.be(tests[index].toString());
+        expect(testDP.getValue()).to.be(tests[index]);
       });
     });
   });
   describe('#complex value', function () {
-
+    testOptions.data.forEach(function (element, index) {
+      var correctValue;
+        if (typeof element.value === 'function') {
+          correctValue = element.value();
+        } else {
+          correctValue = element.value;
+        }
+      it('should set value to "' + JSON.stringify(correctValue) + '" after selected the ' + (index + 1) + ' item', function () {
+        testElement.getElementsByClassName('dp-item')[index].click();
+        expect(testDP.getValue()).to.be(correctValue);
+      });
+    });
   });
 });
