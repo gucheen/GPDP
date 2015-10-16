@@ -1,6 +1,11 @@
 language: node_js
 node_js:
   - "0.12"
-script:
-  - gulp build
-  - gulp doc
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+after_script:
+  - codeclimate-test-reporter < lcov.info
+addons:
+  code_climate:
+    repo_token: 32e862cf16ce63273d4d3823b8c509e9e32f08eb0289207b5f7d278133901232

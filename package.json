@@ -9,7 +9,7 @@
   "homepage": "https://github.com/gucheen/GPDP",
   "main": "src/js/dp.js",
   "scripts": {
-    "test": "./node_modules/karma/bin/karma start"
+    "test": "karma start --browsers Firefox --single-run"
   },
   "author": "Guc",
   "license": "MIT",
