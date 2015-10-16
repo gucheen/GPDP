@@ -7,15 +7,15 @@ testDp.listen('changeValue', function (value) {
 var testDp2 = new DP(document.getElementsByClassName('test2')[0], {
   name: 'Complex data',
   data: [
-    {label: 1, value: {a: 1}},
-    {label: 2, value: [1, 2]},
+    {label: 'Object', value: {a: 1}},
+    {label: 'Array', value: [1, 2]},
     {
-      label: 3,
+      label: 'Function',
       value: function () {
         return 'value returned by function';
       }
     },
-    {label: 4, value: null}
+    {label: 'Null', value: null}
   ]
 });
 
