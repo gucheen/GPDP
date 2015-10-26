@@ -1,5 +1,4 @@
-requirejs(['dist/js/dp.min.js'], function (DP) {
-  var testDp = new DP(document.getElementsByClassName('dp-container')[0]);
+var testDp = new DP(document.getElementsByClassName('dp-container')[0]);
 
   testDp.listen('changeValue', function (value) {
     document.getElementsByClassName('test-result')[0].textContent = value;
@@ -30,4 +29,3 @@ requirejs(['dist/js/dp.min.js'], function (DP) {
     console.log('%cLOG VALUE: testDp2', 'color: blue', value);
     document.getElementsByClassName('test2-result')[0].textContent = (typeof value) + ' : ' + JSON.stringify(value, null, 2);
   });
-});
