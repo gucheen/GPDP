@@ -47,11 +47,11 @@ describe('DP', function () {
   describe('#complex value', function () {
     testOptions.data.forEach(function (element, index) {
       var correctValue;
-        if (typeof element.value === 'function') {
-          correctValue = element.value();
-        } else {
-          correctValue = element.value;
-        }
+      if (typeof element.value === 'function') {
+        correctValue = element.value();
+      } else {
+        correctValue = element.value;
+      }
       it('should set value to "' + JSON.stringify(correctValue) + '" after selected the ' + (index + 1) + ' item', function () {
         testElement.getElementsByClassName('dp-item')[index].click();
         expect(testDP.getValue()).to.be(correctValue);

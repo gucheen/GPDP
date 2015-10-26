@@ -6,6 +6,10 @@
     "dropdown",
     "selector"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gucheen/GPDP"
+  },
   "homepage": "https://github.com/gucheen/GPDP",
   "main": "src/js/dp.js",
   "scripts": {
@@ -14,7 +18,7 @@
   "author": "Guc",
   "license": "MIT",
   "devDependencies": {
-    "browser-sync": "^2.7.11",
+    "browser-sync": "^2.9.11",
     "expect.js": "^0.3.1",
     "gulp": "^3.9.0",
     "gulp-minify-css": "^1.2.1",
@@ -27,6 +31,7 @@
     "karma-chrome-launcher": "^0.2.1",
     "karma-firefox-launcher": "^0.1.6",
     "karma-mocha": "^0.2.0",
-    "mocha": "^2.3.3"
+    "mocha": "^2.3.3",
+    "requirejs": "^2.1.20"
   }
 }

@@ -7,7 +7,7 @@ var minifyCss = require('gulp-minify-css');
 var shell = require('gulp-shell');
 
 // Static Server + watching scss/html files
-gulp.task('serve', ['sass'], function () {
+gulp.task('serve', ['sass', 'js'], function () {
 
   browserSync.init({
     server: "./",
@@ -15,6 +15,7 @@ gulp.task('serve', ['sass'], function () {
   });
 
   gulp.watch("./src/sass/*.scss", ['sass']);
+  gulp.watch('./src/js/*.js', ['js']);
   gulp.watch("./*.html").on('change', browserSync.reload);
 });
 
@@ -34,13 +35,16 @@ gulp.task('doc', shell.task([
   './node_modules/jsdoc/jsdoc.js src/js/ ./README.md -d ./doc'
 ]));
 
-gulp.task('build', ['sass'], function () {
+gulp.task('js', function () {
   return gulp.src('src/js/*.js')
     .pipe(uglify())
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest('dist/js'));
+    .pipe(gulp.dest('dist/js'))
+    .pipe(browserSync.stream());
 });
+
+gulp.task('build', ['sass', 'js']);
 
 gulp.task('default', ['serve']);
