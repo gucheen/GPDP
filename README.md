@@ -1,24 +1,87 @@
-# GPDP
-Google plus like dropdown selector  
-
+# GPDP  
 [![Build Status](https://travis-ci.org/gucheen/GPDP.svg?branch=master)](https://travis-ci.org/gucheen/GPDP)
 [![Dependency Status](https://david-dm.org/gucheen/GPDP.svg?style=flat-square)](https://david-dm.org/gucheen/GPDP)
 [![devDependency Status](https://david-dm.org/gucheen/GPDP/dev-status.svg?style=flat-square)](https://david-dm.org/gucheen/GPDP#info=devDependencies)
 
-# Features
-1. Pure JavaScript and CSS(none dependencies)
-2. Support complex value types. Object, Array, Number, Function,  etc...
-3. Customized themes
+Google plus like dropdown selector.
+
+- **Pure JavaScript(none dependencies)**: Easy to be used in any project. 
+- **Support complex value types**: Object, Array, Number, Function, etc...
+- **Customized themes**
+
+# Installation
+
+## Bower
+```
+bower install gpdp
+```
+Add the script and style file to your `index.html`:
+
+```html
+<link rel="stylesheet" href="bower_components/gpdp/dist/css/dp.min.css">
+
+<script type="text/javascript" src="bower_components/gpdp/dist/dp.min.js">
+</script>
+```
+
+## NPM
+
+```
+npm install gpdp
+```
+Add the script and style file to your `index.html`:
+
+```html
+<link rel="stylesheet" href="node_modules/gpdp/dist/css/dp.min.css">
+
+<script type="text/javascript" src="node_modules/gpdp/dist/dp.min.js">
+</script>
+```
+
+## RequireJS
+Currently only the JavaScript file can be load asynchronously.
+
+```js
+requirejs(['path/to/gpdp'], function (DP) {
+  // Use DP function here
+});
+``` 
 
 # Usage
 ```js
 // New DP
 var newDP = new DP(containerElement, options);
 
+
+/*
+* If you want to use complex value,
+* define an object of the options like in the example below.
+*/
+var options = {
+  name: 'Complex data',
+  data: [{
+    label: 'Object',
+    value: {
+      a: 1
+    }
+  }, {
+    label: 'Array',
+    value: [1, 2]
+  }, {
+    label: 'Function',
+    value: function () {
+      return 'value returned by function';
+    }
+  }, {
+    label: 'Null',
+    value: null
+  }]
+}
+
 /*
 * Attach Event
 * eventType: 'changeValue'
-* callback: function (value) {}
+* callback: function (value) {} - callback function will have a paramter of the current value.
 */
 newDP.listen(eventType, callback);
 
