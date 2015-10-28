@@ -5,6 +5,7 @@ var uglify = require('gulp-uglify');
 var rename = require("gulp-rename");
 var minifyCss = require('gulp-minify-css');
 var shell = require('gulp-shell');
+var ts = require('gulp-typescript');
 
 // Static Server + watching scss/html files
 gulp.task('serve', ['sass', 'js'], function () {
@@ -19,7 +20,6 @@ gulp.task('serve', ['sass', 'js'], function () {
   gulp.watch("./*.html").on('change', browserSync.reload);
 });
 
-// Compile sass into CSS & auto-inject into browsers
 gulp.task('sass', function () {
   return gulp.src("./src/sass/*.scss")
     .pipe(sass())
@@ -43,6 +43,19 @@ gulp.task('js', function () {
     }))
     .pipe(gulp.dest('dist/js'))
     .pipe(browserSync.stream());
+});
+
+gulp.task('ts', function () {
+  return gulp.src('src/ts/*.ts')
+    .pipe(ts())
+    .pipe(gulp.dest('src/ts'))
+    .pipe(uglify({
+      preserveComments: 'license'
+    }))
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('build', ['sass', 'js']);
