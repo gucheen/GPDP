@@ -24,12 +24,32 @@ interface DPStore {
   value?: any;
 }
 
+interface DPMethodStructure {
+  getValue(): any;
+    
+  setValue(value: string): boolean;
+  
+  open();
+  
+  close();
+  
+  listen(event: string, func: (value: any) => void);
+  
+  unlisten(event: string, func: (value: any) => void);
+}
+
 class DPInitial {
   store: DPStore;
   
   nodes: DPNodes;
   
   settings: DPSettings;
+  
+  container: HTMLElement;
+  
+  data: any;
+  
+  _events: Object;
   
   constructor() {
     this.settings = {};
@@ -38,11 +58,7 @@ class DPInitial {
   }
 }
 
-class DPMethods extends DPInitial {  
-  data: any;
-  
-  _events: Object;
-  
+class DPMethods extends DPInitial implements DPMethodStructure {  
   getValue() {
     var value;
     var index;
@@ -92,7 +108,7 @@ class DPMethods extends DPInitial {
     this._events[event].splice(this._events[event].indexOf(func), 1);
   }
   
-  trigger(event: string) {
+  private trigger(event: string) {
     this._events = this._events || {};
     if (event in this._events === false) return;
     for (var i = 0; i < this._events[event].length; i++) {
@@ -102,8 +118,6 @@ class DPMethods extends DPInitial {
 }
 
 class DP extends DPMethods {
-  container: HTMLElement;
-
   constructor(element: HTMLElement, options: DPOptions) {
     super();
     
@@ -163,7 +177,7 @@ class DP extends DPMethods {
     }
 		
     /* bind click event */
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function(event: MouseEvent) {
       if (self.nodes.menu.classList.contains('open') && !self.isDescendant(self.container, event.target)) {
         self.nodes.menu.classList.remove('open');
       }
@@ -175,7 +189,7 @@ class DP extends DPMethods {
     });
 
     // click on menu
-    this.nodes.menu.addEventListener('click', function(event) {
+    this.nodes.menu.addEventListener('click', function(event: MouseEvent) {
       if (event.target.classList.contains('dp-item')) {
         var index = parseInt(event.target.dataset.index, 10);
 
