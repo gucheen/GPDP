@@ -15,7 +15,7 @@ Google plus like dropdown selector.
 ```
 bower install gpdp
 ```
-Add the script and style file to your `index.html`:
+Add the script and style files to your `index.html`:
 
 ```html
 <link rel="stylesheet" href="bower_components/gpdp/dist/css/dp.min.css">
@@ -29,7 +29,7 @@ Add the script and style file to your `index.html`:
 ```
 npm install gpdp
 ```
-Add the script and style file to your `index.html`:
+Add the script and style files to your `index.html`:
 
 ```html
 <link rel="stylesheet" href="node_modules/gpdp/dist/css/dp.min.css">
