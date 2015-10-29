@@ -1,3 +1,10 @@
+/**
+ * GPDP
+ * Author: guchengf@live.com
+ * Version: 0.1.2
+ * Link: https://github.com/gucheen/GPDP
+ */
+
 interface DPDataItem {
   label: string;
   value: any;
@@ -26,31 +33,31 @@ interface DPStore {
 
 interface DPMethodStructure {
   getValue(): any;
-    
+
   setValue(value: string): boolean;
-  
+
   open();
-  
+
   close();
-  
+
   listen(event: string, func: (value: any) => void);
-  
+
   unlisten(event: string, func: (value: any) => void);
 }
 
 class DPInitial {
   store: DPStore;
-  
+
   nodes: DPNodes;
-  
+
   settings: DPSettings;
-  
+
   container: HTMLElement;
-  
+
   data: any;
-  
+
   _events: Object;
-  
+
   constructor() {
     this.settings = {};
     this.store = {}
@@ -58,7 +65,7 @@ class DPInitial {
   }
 }
 
-class DPMethods extends DPInitial implements DPMethodStructure {  
+class DPMethods extends DPInitial implements DPMethodStructure {
   getValue() {
     var value;
     var index;
@@ -74,40 +81,40 @@ class DPMethods extends DPInitial implements DPMethodStructure {
     }
     return value;
   }
-  
+
   setValue(value: string) {
     this.store.currentIndex = null;
     this.store.value = value;
     this.trigger('changeValue');
     return true;
   }
-  
+
   setValueIndex(index: number) {
     this.store.value = null;
     this.store.currentIndex = index;
     this.trigger('changeValue');
   }
-  
+
   open() {
     this.nodes.menu.classList.add('open');
   }
-  
+
   close() {
     this.nodes.menu.classList.remove('open');
   }
-  
-  listen(event: string, func: Function) {
+
+  listen(event: string, func: (value) => void) {
     this._events = this._events || {};
     this._events[event] = this._events[event] || [];
     this._events[event].push(func);
   }
-  
-  unlisten(event: string, func: Function) {
+
+  unlisten(event: string, func: (value) => void) {
     this._events = this._events || {};
     if (event in this._events === false) return;
     this._events[event].splice(this._events[event].indexOf(func), 1);
   }
-  
+
   private trigger(event: string) {
     this._events = this._events || {};
     if (event in this._events === false) return;
@@ -120,7 +127,7 @@ class DPMethods extends DPInitial implements DPMethodStructure {
 class DP extends DPMethods {
   constructor(element: HTMLElement, options: DPOptions) {
     super();
-    
+
     var self = this;
     this.container = element;
 
@@ -141,7 +148,9 @@ class DP extends DPMethods {
       // validate if data's type is Array
       if (Array.isArray(this.data)) {
         // empty current container (if any)
-        this.container.innerHTML = '';
+        while (this.container.hasChildNodes()) {
+          this.container.removeChild(this.container.lastChild);
+        }
         this.container.classList.add('dp-container');
 
         // create all elements
@@ -178,7 +187,9 @@ class DP extends DPMethods {
 		
     /* bind click event */
     document.addEventListener('click', function(event: MouseEvent) {
-      if (self.nodes.menu.classList.contains('open') && !self.isDescendant(self.container, event.target)) {
+      var target = <HTMLElement>event.target;
+
+      if (self.nodes.menu.classList.contains('open') && !self.isDescendant(self.container, target)) {
         self.nodes.menu.classList.remove('open');
       }
     });
@@ -190,19 +201,21 @@ class DP extends DPMethods {
 
     // click on menu
     this.nodes.menu.addEventListener('click', function(event: MouseEvent) {
-      if (event.target.classList.contains('dp-item')) {
-        var index = parseInt(event.target.dataset.index, 10);
+      var target = <HTMLElement>event.target;
+
+      if (target.classList.contains('dp-item')) {
+        var index = parseInt(target.dataset['index'], 10);
 
         if (index > -1) {
           self.setValueIndex(index);
         } else {
-          self.setValue(event.target.dataset.value);
+          self.setValue(target.dataset['value']);
         }
         self.close();
       }
     });
   }
-  
+
   private isDescendant(parent: Element, child: Element) {
     var node = child.parentNode;
     while (node != null) {

@@ -7,21 +7,21 @@ var testElement = document.createElement('div');
 var testOptions = {
   name: 'Test',
   data: [
-    {label: 'Object', value: {a: 1}},
-    {label: 'Array', value: [1, 2]},
+    { label: 'Object', value: { a: 1 } },
+    { label: 'Array', value: [1, 2] },
     {
       label: 'Function',
       value: function () {
         return 'value returned by function';
       }
     },
-    {label: 'Null', value: null}
+    { label: 'Null', value: null }
   ]
 };
 
 var testDP = new DP(testElement, testOptions);
 
-describe('DP', function () {
+describe('GPDP', function () {
   describe('#DOM elements', function () {
     it('should create all DOM components', function () {
       expect(testElement.getElementsByClassName('dp-unit')).to.have.length(1);
