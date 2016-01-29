@@ -1,7 +1,9 @@
 /**
+ * @license
+ * Copyright (c) 2016 Cheng Gu
  * GPDP
  * Author: guchengf@live.com
- * Version: 0.1.3
+ * Version: 0.1.4
  * Link: https://github.com/gucheen/GPDP
  */
 var __extends = (this && this.__extends) || function (d, b) {

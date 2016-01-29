@@ -3,7 +3,7 @@
 [![Dependency Status](https://david-dm.org/gucheen/GPDP.svg?style=flat-square)](https://david-dm.org/gucheen/GPDP)
 [![devDependency Status](https://david-dm.org/gucheen/GPDP/dev-status.svg?style=flat-square)](https://david-dm.org/gucheen/GPDP#info=devDependencies)
 
-Google plus like dropdown selector.
+Classic Google plus like dropdown selector.
 
 - **Pure JavaScript(none dependencies)**: Easy to be used in any project. 
 - **Support complex value types**: Object, Array, Number, Function, etc...
@@ -37,15 +37,6 @@ Add the script and style files to your `index.html`:
 <script type="text/javascript" src="node_modules/gpdp/dist/dp.min.js">
 </script>
 ```
-
-## RequireJS
-Currently only the JavaScript file can be load asynchronously.
-
-```js
-requirejs(['path/to/gpdp'], function (DP) {
-  // Use DP function here
-});
-``` 
 
 # Usage
 ```js
@@ -98,12 +89,12 @@ newDP.getValue();
 
 # TODO
 1. More features
-2. Full unit-testing
+2. ~~Full unit-testing~~
 
 # License
 The MIT License (MIT)
 
-Copyright (c) 2015 Cheng Gu
+Copyright (c) 2016 Cheng Gu
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -122,3 +113,5 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
