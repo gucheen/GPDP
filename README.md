@@ -5,7 +5,7 @@
 
 Classic Google plus like dropdown selector.
 
-- **Pure JavaScript(none dependencies)**: Easy to be used in any project. 
+- **Pure JavaScript(none dependencies)**: Easy to be used in any projects. 
 - **Support complex value types**: Object, Array, Number, Function, etc...
 - **Customized themes**
 
@@ -20,7 +20,7 @@ Add the script and style files to your `index.html`:
 ```html
 <link rel="stylesheet" href="bower_components/gpdp/dist/css/dp.min.css">
 
-<script type="text/javascript" src="bower_components/gpdp/dist/dp.min.js">
+<script type="text/javascript" src="bower_components/gpdp/dist/js/dp.min.js">
 </script>
 ```
 
@@ -34,7 +34,7 @@ Add the script and style files to your `index.html`:
 ```html
 <link rel="stylesheet" href="node_modules/gpdp/dist/css/dp.min.css">
 
-<script type="text/javascript" src="node_modules/gpdp/dist/dp.min.js">
+<script type="text/javascript" src="node_modules/gpdp/dist/js/dp.min.js">
 </script>
 ```
 
